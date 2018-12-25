@@ -1,0 +1,26 @@
+import React from "react";
+import tucsonImage from "../public/tucson1.jpg"; // Tell Webpack this JS file uses this image
+
+const Landing = () => {
+  return (
+    <div className="parallax-container">
+      <div className="container landing-container">
+        <h1 className="header center title">
+          Tucson Community Meditation Center
+        </h1>
+        <div className="landing-links">
+          <h5 className="header col s12 light">Classes</h5>
+          <h5 className="header col s12 light">Retreats</h5>
+          <h5 className="header col s12 light">Donate</h5>
+          <h5 className="header col s12 light">About</h5>
+          <h5 className="header col s12 light">About</h5>
+        </div>
+      </div>
+      <div className="parallax">
+        <img src={tucsonImage} alt="Unsplashed background img 1" />
+      </div>
+    </div>
+  );
+};
+
+export default Landing;
