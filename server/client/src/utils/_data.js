@@ -1,8 +1,8 @@
-let retreats = {
+export let retreats = {
   abc: {
     title: "Mindfulness Meditation Intensive Residential Retreat",
-    dateBegin: 1549692015,
-    dateEnd: 1550383863,
+    timestampBegin: 1549706085,
+    timestampEnd: 1550397386,
     earlyBirdDeadline: 1547014263,
     strictDeadline: 1549580400,
     hostedBy: "Tucson Community Meditation Center",
@@ -14,7 +14,7 @@ let retreats = {
   }
 };
 
-teachers = {
+export let teachers = {
   shinzenyoung: {
     firstName: "Shinzen",
     lastName: "Young",
@@ -27,7 +27,7 @@ teachers = {
   }
 };
 
-locations = {
+export let locations = {
   codranch: {
     name: "C.O.D. Ranch",
     city: "Oracle",
@@ -39,7 +39,7 @@ locations = {
   }
 };
 
-fees = {
+export let fees = {
   abc: {
     options: [
       {
@@ -80,3 +80,27 @@ fees = {
     ]
   }
 };
+
+export function _getRetreats() {
+  return new Promise((res, rej) => {
+    setTimeout(() => res({ ...retreats }), 200);
+  });
+}
+
+export function _getTeachers() {
+  return new Promise((res, rej) => {
+    setTimeout(() => res({ ...teachers }), 200);
+  });
+}
+
+export function _getLocations() {
+  return new Promise((res, rej) => {
+    setTimeout(() => res({ ...locations }), 200);
+  });
+}
+
+export function _getFees() {
+  return new Promise((res, rej) => {
+    setTimeout(() => res({ ...fees }), 200);
+  });
+}

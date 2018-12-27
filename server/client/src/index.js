@@ -1,6 +1,6 @@
-import "./css/js/waves";
+// import "./css/js/waves";
 import "./css/sass/materialize.scss";
-import "./css/style.css";
+import "./css/style.scss";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";

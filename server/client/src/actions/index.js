@@ -1,27 +1,54 @@
-import axios from 'axios';
-import { FETCH_USER, FETCH_SURVEYS } from './types';
+import { getInitialData } from "../utils/api";
+import {
+  STORE_RETREATS,
+  STORE_TEACHERS,
+  STORE_LOCATIONS,
+  STORE_FEES
+} from "./types";
 
-export const fetchUser = () => async dispatch => {
-  const res = await axios.get('/api/current_user');
+/*
+    Make a API call to our "database" to get our initial data.
+    These API calls are Promises and will resolve with a .then()
+    Deconstruct the returned data { users, questions }
 
-  dispatch({ type: FETCH_USER, payload: res.data });
-};
+    Then, dispatch the resolved data from the API using dispatch()
+ */
 
-export const handleToken = token => async dispatch => {
-  const res = await axios.post('/api/stripe', token);
+export function handleInitialData() {
+  return dispatch => {
+    return getInitialData().then(({ retreats, teachers, locations, fees }) => {
+      dispatch(storeRetreats(retreats));
+      dispatch(storeTeachers(teachers));
+      dispatch(storeLocations(locations));
+      dispatch(storeFees(fees));
+    });
+  };
+}
 
-  dispatch({ type: FETCH_USER, payload: res.data });
-};
+function storeRetreats(retreats) {
+  return {
+    type: STORE_RETREATS,
+    retreats
+  };
+}
 
-export const submitSurvey = (values, history) => async dispatch => {
-  const res = await axios.post('/api/surveys', values);
+function storeTeachers(teachers) {
+  return {
+    type: STORE_TEACHERS,
+    teachers
+  };
+}
 
-  history.push('/surveys');
-  dispatch({ type: FETCH_USER, payload: res.data });
-};
+function storeLocations(locations) {
+  return {
+    type: STORE_LOCATIONS,
+    locations
+  };
+}
 
-export const fetchSurveys = () => async dispatch => {
-  const res = await axios.get('/api/surveys');
-
-  dispatch({ type: FETCH_SURVEYS, payload: res.data });
-};
+function storeFees(fees) {
+  return {
+    type: STORE_FEES,
+    fees
+  };
+}

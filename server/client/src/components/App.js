@@ -3,14 +3,15 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
-import Header from "./Header";
 import Landing from "./Landing";
-import Dashboard from "./Dashboard";
-import SurveyNew from "./surveys/SurveyNew";
+import RetreatCont from "./retreats/RetreatCont";
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchUser();
+    // remember that this component is connected to the redux store.
+    // we are provided an action that is already wrapped with dispatch.
+    // https://react-redux.js.org/using-react-redux/connect-mapdispatch#providing-a-mapdispatchtoprops-parameter
+    this.props.handleInitialData();
   }
 
   render() {
@@ -19,8 +20,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Route exact path="/" component={Landing} />
-            <Route exact path="/surveys" component={Dashboard} />
-            <Route path="/surveys/new" component={SurveyNew} />
+            <Route path="/retreats" component={RetreatCont} />
           </div>
         </BrowserRouter>
       </div>
@@ -28,6 +28,8 @@ class App extends Component {
   }
 }
 
+// first argument: mapStateToProps is null
+// second argument: mapDispatchToProps is used for dispatching actions to the store.
 export default connect(
   null,
   actions

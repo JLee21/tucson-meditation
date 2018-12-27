@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "../css/sass/materialize.scss";
 import M from "materialize-css";
 import tucsonImage from "../public/tucson1.jpg"; // Tell Webpack this JS file uses this image
@@ -15,7 +16,6 @@ class Landing extends Component {
           ref={Landing => {
             this.Landing = Landing;
           }}
-          className="carousel"
           id="index-banner"
           className="parallax-container"
         >
@@ -25,10 +25,21 @@ class Landing extends Component {
                 Tucson Community Meditation Center
               </h1>
               <div className="landing-links">
-                <h4 className="header col s12 light">Classes</h4>
-                <h4 className="header col s12 light">Retreats</h4>
-                <h4 className="header col s12 light">Donate</h4>
-                <h4 className="header col s12 light">About</h4>
+                <h4>
+                  <Link to="#">Classes</Link>
+                </h4>
+                <h4>
+                  <Link to="/retreats">Retreats</Link>
+                </h4>
+                <h4>
+                  <Link to="#">Schedule</Link>
+                </h4>
+                <h4>
+                  <Link to="#">Donate</Link>
+                </h4>
+                <h4>
+                  <Link to="#">About</Link>
+                </h4>
               </div>
             </div>
           </div>
