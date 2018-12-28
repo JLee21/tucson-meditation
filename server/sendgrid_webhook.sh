@@ -1,5 +1,5 @@
 function localtunnel {
-  lt -s serene-anchorage --port 5000
+  lt -s serene-anchorage --port 3000
 }
 until localtunnel; do
 echo "localtunnel server crashed"

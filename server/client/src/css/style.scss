@@ -26,12 +26,58 @@
     margin-left: 10px;
   }
 }
-// i {
-//   position: relative;
-//   top: -5px;
-//   margin-right: 15px;
-//   margin-left: 10px;
-// }
+.card-content-2 {
+  display: float;
+  flex-wrap: wrap;
+  padding-left: 0px;
+}
+.card-vert-header {
+  display: flex;
+  // float: left;
+  max-width: 120px;
+  // height: 200px;
+}
+.card-vert-content {
+  display: flex;
+}
+
+.shadow {
+  box-shadow: inset 0px 3px 3px #333;
+}
+.availble-table table {
+  table-layout: fixed;
+}
+
+.avatar-img {
+  border-radius: 50%;
+  width: 100%;
+  max-width: 80px;
+  max-height: 80px;
+  margin: 0 auto;
+}
+.card-image.teacher > img {
+  border-radius: 50% !important;
+  width: 100%;
+  max-width: 80px;
+  max-height: 80px;
+  margin: 0 auto;
+}
+.card-image.location > img {
+  border-radius: none !important;
+  max-width: 80px !important;
+  max-height: 80px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.main-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.avail-button {
+  color: teal;
+  background-color: white !important;
+}
 
 .parallax-container {
   /* min-height: 100vh; */
@@ -43,7 +89,7 @@
   width: 100%;
 }
 
-img {
+.parallax img {
   filter: brightness(55%);
 }
 .parallax::after {

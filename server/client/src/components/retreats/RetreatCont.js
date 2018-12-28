@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import RetreatCard from "./RetreatCard";
+import { handleInitialData } from "../../actions";
 
 class RetreatCont extends Component {
-  componentDidMount() {}
+  // componentDidMount() {
+  //   this.props.dispatch(handleInitialData());
+  // }
 
   render() {
     const { retreatIds } = this.props;

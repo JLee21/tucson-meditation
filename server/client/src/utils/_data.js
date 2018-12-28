@@ -19,7 +19,7 @@ export let teachers = {
     firstName: "Shinzen",
     lastName: "Young",
     pictureUrls: [
-      "https://www.shinzen.org/wp-content/uploads/2016/08/Shinzen-SofE-Headshot-20160212-EricH-38-2-copy.jpg"
+      "https://prod-ecom-media.soundstrue.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/h/shinzen-young.jpg"
     ],
     description:
       "Shinzen Young is a Westerner who has trained extensively in Asian monasteries. His deep understanding of Eastern philosophy and Western science gives him the ability to teach meditation using an approach that is accessible to the modern mind. He has been conducting retreats in Tucson since 1980. ",
@@ -34,8 +34,13 @@ export let locations = {
     state: "Arizona",
     address: "37 South COD Ranch Rd",
     zipcode: 85623,
-    url: "https://www.codranch.com/",
-    drivingDescription: "37 miles North of Tucson in Oracle, Arizona"
+    url: "www.codranch.com",
+    pictureUrls: [
+      "https://www.codranch.com/wp-content/uploads/2016/03/LOGO6.png"
+    ],
+    description:
+      "For twenty years the Historic C.O. D. Ranch has been a natural sanctuary for a diverse number of groups in the southwest Arizona area looking for a special place in a beautiful natural setting with delicious meals, warm comfortable accommodations and a caring spirit. Enjoy hiking trails, a stunning view, authentic fire pit, and perfect inside accommodations for meetings or parties. The COD Ranch truly is the perfect Tucson ranch event venue and retreat center for any special occasion.",
+    drivingDescription: "37 miles North of Tucson"
   }
 };
 
@@ -46,31 +51,46 @@ export let fees = {
         title: "Single Occupancy",
         description: "",
         fee: "1275",
-        earlyBirdFee: "1325"
+        earlyBirdFee: "1325",
+        capacity: "20",
+        available: "5",
+        waitlist: "0"
       },
       {
         title: "Double Occupancy",
         description: "",
         fee: "1140",
-        earlyBirdFee: "1190"
+        earlyBirdFee: "1190",
+        capacity: "10",
+        available: "3",
+        waitlist: "0"
       },
       {
         title: "Triple/Quad Occupancy",
         description: "",
         fee: "1030",
-        earlyBirdFee: "1080"
+        earlyBirdFee: "1080",
+        capacity: "20",
+        available: "0",
+        waitlist: "5"
       },
       {
         title: 'Triple/Quad Occupancy with "Online Phone Discount"',
         description: "",
         fee: "880",
-        earlyBirdFee: "930"
+        earlyBirdFee: "930",
+        capacity: "20",
+        available: "0",
+        waitlist: "5"
       },
       {
         title: "Camping",
         description: "",
         fee: "870",
-        earlyBirdFee: "920"
+        earlyBirdFee: "920",
+        capacity: "20",
+        available: "0",
+        waitlist: "5"
       },
       {
         title: "Sweat Lodge (optional)",
