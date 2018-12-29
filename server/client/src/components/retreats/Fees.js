@@ -6,7 +6,7 @@ class Fees extends Component {
 
     return (
       <div class="card grey darken-2 shadow">
-        <div style={{ paddingLeft: "8px" }} class="card-content white-text">
+        <div style={{ paddingLeft: "12px" }} class="card-content white-text">
           <span class="card-title">Availability</span>
           <div className="availble-table">
             <table className="">
@@ -19,7 +19,7 @@ class Fees extends Component {
               </thead>
               <tbody>
                 {fees.options.map(option => {
-                  const { capacity, available, waitlist } = option;
+                  const { available, waitlist } = option;
                   let status = available > 0 ? "Open" : "Wait List";
                   let detailWord = available > 0 ? "Available" : "Queue";
                   let detailNum = available > 0 ? available : waitlist;
@@ -45,9 +45,7 @@ class Fees extends Component {
             effectively.
           </p>
         </div>
-        <div class="card-action">
-          <a href="#">Question</a>
-        </div>
+        <div class="card-action" />
       </div>
     );
   }

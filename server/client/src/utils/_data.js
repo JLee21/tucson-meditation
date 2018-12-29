@@ -3,8 +3,6 @@ export let retreats = {
     title: "Mindfulness Meditation Intensive Residential Retreat",
     timestampBegin: 1549706085,
     timestampEnd: 1550397386,
-    earlyBirdDeadline: 1547014263,
-    strictDeadline: 1549580400,
     hostedBy: "Tucson Community Meditation Center",
     classDescription:
       "A non-sectarian, non-denominational practice that develops concentration, insight and compassion. Mindfulness Meditation (Vipassana) increases one’s moment-by-moment awareness of the ordinary mind-body processes. As this awareness is cultivated, blockages and limiting forces become conscious, are observed with detachment and are released. Everyone can develop skill in this simple technique, and it is a practice that can create profound changes in how we live. This retreat is suitable for those wishing an introduction to meditation, as well as for experienced meditators. This retreat is for persons of all levels of meditation experience who are interested in deepening and intensifying their meditation practice. This is a silent retreat with sitting and walking meditation, as well as sessions of mindful movement, i.e. Yoga or Qi Gong. Instruction is through lecture, guided meditation, private and group interviews, and ‘online meditation support’. Special instructions will be available for newcomers during the retreat.",
@@ -46,12 +44,15 @@ export let locations = {
 
 export let fees = {
   abc: {
+    lastUpdate: 1547014263,
+    earlyBirdDeadline: 1547014263,
+    strictDeadline: 1549580400,
     options: [
       {
         title: "Single Occupancy",
         description: "",
-        fee: "1275",
-        earlyBirdFee: "1325",
+        earlyBirdFee: "1275",
+        fee: "1325",
         capacity: "20",
         available: "5",
         waitlist: "0"
@@ -59,8 +60,8 @@ export let fees = {
       {
         title: "Double Occupancy",
         description: "",
-        fee: "1140",
-        earlyBirdFee: "1190",
+        earlyBirdFee: "1140",
+        fee: "1190",
         capacity: "10",
         available: "3",
         waitlist: "0"
@@ -68,8 +69,8 @@ export let fees = {
       {
         title: "Triple/Quad Occupancy",
         description: "",
-        fee: "1030",
-        earlyBirdFee: "1080",
+        earlyBirdFee: "1030",
+        fee: "1080",
         capacity: "20",
         available: "0",
         waitlist: "5"
@@ -77,8 +78,8 @@ export let fees = {
       {
         title: 'Triple/Quad Occupancy with "Online Phone Discount"',
         description: "",
-        fee: "880",
-        earlyBirdFee: "930",
+        earlyBirdFee: "880",
+        fee: "930",
         capacity: "20",
         available: "0",
         waitlist: "5"
@@ -86,12 +87,14 @@ export let fees = {
       {
         title: "Camping",
         description: "",
-        fee: "870",
-        earlyBirdFee: "920",
+        earlyBirdFee: "870",
+        fee: "920",
         capacity: "20",
         available: "0",
         waitlist: "5"
-      },
+      }
+    ],
+    optionalOptions: [
       {
         title: "Sweat Lodge (optional)",
         description: "",

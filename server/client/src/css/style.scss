@@ -1,3 +1,51 @@
+@import "sass/components/color-variables";
+
+.detailClick {
+  // font-weight: 300;
+  // font-size: 0.8em;
+  color: color("teal", "darken-1");
+}
+.detailClick:hover {
+  color: color("teal", "darken-5");
+  cursor: pointer;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.fine-details {
+  // color: red;
+  color: color("black", "lighten-4");
+  margin: 0;
+}
+.secondary-badge {
+  min-width: 3rem;
+  line-height: 22px;
+  padding: 3px 6px;
+  // margin-left: 10px;
+  // margin-right: 10px;
+  // margin-bottom: 9px;
+  margin: 10px !important;
+  text-align: center;
+  font-size: 1.6rem;
+  color: color("teal", "darken-1");
+  box-sizing: border-box;
+  font-weight: 300;
+  font-size: 0.8rem;
+  // background-color: #26a69a;
+  border-style: solid;
+  border-color: color("teal", "darken-1");
+  border-width: 1px;
+  border-radius: 2px;
+}
+.secondary-badge-2 {
+  border-style: solid;
+  border-color: color("teal", "darken-1");
+  border-width: 1px;
+  border-radius: 2px;
+}
+
 .daterange-hostby {
   display: flex;
   flex-wrap: wrap;
@@ -46,6 +94,8 @@
 }
 .availble-table table {
   table-layout: fixed;
+  font-weight: 100;
+  font-family: "Martel Sans", sans-serif;
 }
 
 .avatar-img {
@@ -74,7 +124,7 @@
   display: flex;
   justify-content: space-around;
 }
-.avail-button {
+.secondary-button {
   color: teal;
   background-color: white !important;
 }

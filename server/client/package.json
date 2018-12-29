@@ -48,6 +48,7 @@
     "babel-loader": "^8.0.4",
     "flow-bin": "^0.89.0",
     "node-sass": "^4.10.0",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "storybook-addon-props": "^3.0.4"
   }
 }

@@ -66,7 +66,7 @@ class Landing extends Component {
                 </div>
               </div>
 
-              <div className="col s12 m4">
+              <div className="col s12 m4 green">
                 <div className="icon-block">
                   <h2 className="center black-text">
                     <i className="material-icons">group</i>
