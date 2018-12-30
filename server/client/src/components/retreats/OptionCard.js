@@ -4,6 +4,12 @@ import React, { Component } from "react";
 import * as moment from "moment";
 
 class OptionCard extends Component {
+  state = {
+    showMore: false
+  };
+  handleReadMore = () => {
+    this.setState(currState => ({ showMore: !currState.showMore }));
+  };
   render() {
     const {
       title,
@@ -13,8 +19,10 @@ class OptionCard extends Component {
       capacity,
       available,
       waitlist
-    } = this.props.fees;
+    } = this.props.option;
     const { deadline, earlyBirdDeadline } = this.props;
+    const showMorePrompt =
+      this.state.showMore === true ? "Hide Details" : "Show Details";
 
     let status = available > 0 ? "Open" : "Wait List";
     let detailWord = available > 0 ? "Available" : "In Queue";
@@ -53,6 +61,14 @@ class OptionCard extends Component {
             <p className="fine-details">
               Registration Deadline: {dateDeadline} Pacific Time
             </p>
+            {description && this.state.showMore && (
+              <p style={{ marginTop: "5px" }}>{description}</p>
+            )}
+            {description && (
+              <div onClick={this.handleReadMore} className="detailClick">
+                {showMorePrompt}
+              </div>
+            )}
           </div>
         </div>
         <div className="card-action section center main-buttons">

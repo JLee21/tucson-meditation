@@ -5,8 +5,8 @@ class Fees extends Component {
     const { fees } = this.props;
 
     return (
-      <div class="card grey darken-2 shadow">
-        <div style={{ paddingLeft: "12px" }} class="card-content white-text">
+      <div class="card grey darken-3 white-text shadow">
+        <div style={{ paddingLeft: "12px" }} class="card-content">
           <span class="card-title">Availability</span>
           <div className="availble-table">
             <table className="">

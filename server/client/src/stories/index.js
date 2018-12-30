@@ -13,18 +13,19 @@ import reducers from "../reducers";
 import middleware from "../middleware";
 import { retreats, teachers, locations, fees } from "../utils/_data.js";
 
+import { Button, Welcome } from "@storybook/react/demo";
+import RetreatCard from "../components/retreats/RetreatCard";
+import RetreatCardSimple from "../components/retreats/RetreatCardSimple";
+import OptionCard from "../components/retreats/OptionCard";
+import TeacherCard from "../components/retreats/TeacherCard";
+import LocationCard from "../components/retreats/LocationCard";
+
 const initData = {
   retreats,
   teachers,
   locations,
   fees
 };
-
-import { Button, Welcome } from "@storybook/react/demo";
-import RetreatCard from "../components/retreats/RetreatCard";
-import RetreatCardSimple from "../components/retreats/RetreatCardSimple";
-import OptionCard from "../components/retreats/OptionCard";
-import TeacherCard from "../components/retreats/TeacherCard";
 
 const store = createStore(reducers, initData, middleware);
 
@@ -37,25 +38,27 @@ storiesOf("Retreat Details", module)
   .add("Retreat Simple", () => <RetreatCardSimple />);
 
 const TEACHERID = "shinzenyoung";
+const LOCATIONID = "codranch";
 storiesOf("Retreat Details", module)
   .addDecorator(getStory => <Provider store={store}>{getStory()}</Provider>)
-  .add("TeacherCard", () => <TeacherCard teacher={teachers[TEACHERID]} />);
+  .add("TeacherCard", () => <TeacherCard teacher={teachers[TEACHERID]} />)
+  .add("LocationCard", () => <LocationCard location={locations[LOCATIONID]} />);
 
 const FEESID = "abc";
 storiesOf("Retreat Details", module)
   .addDecorator(getStory => <Provider store={store}>{getStory()}</Provider>)
   .add("OptionCard", () => (
     <OptionCard
-      deadline={initData.fees[FEESID].strictDeadline}
+      option={initData.fees[FEESID].options[0]}
+      deadline={initData.fees[FEESID].deadline}
       earlyBirdDeadline={initData.fees[FEESID].earlyBirdDeadline}
-      fees={initData.fees[FEESID].options[0]}
     />
   ))
   .add("OptionCard Wait List", () => (
     <OptionCard
-      deadline={initData.fees[FEESID].strictDeadline}
+      option={initData.fees[FEESID].options[2]}
+      deadline={initData.fees[FEESID].deadline}
       earlyBirdDeadline={initData.fees[FEESID].earlyBirdDeadline}
-      fees={initData.fees[FEESID].options[2]}
     />
   ));
 

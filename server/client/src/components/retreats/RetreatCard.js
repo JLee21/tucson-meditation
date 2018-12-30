@@ -3,12 +3,14 @@ import React, { Component } from "react";
 import Fees from "./Fees";
 import ClassDesc from "./ClassDesc";
 import TeacherCard from "./TeacherCard";
+import LocationCard from "./LocationCard";
+import OptionCont from "./OptionCont";
 import { connect } from "react-redux";
 import pick from "lodash/pick";
 import * as moment from "moment";
-// <div class="divider" />
-// <i class="far fa-sun" />
-// <i class="material-icons tiny">brightness_5</i>
+// <div className="divider" />
+// <i className="far fa-sun" />
+// <i className="material-icons tiny">brightness_5</i>
 
 type Props = {
   retreatID: string,
@@ -20,7 +22,8 @@ type Props = {
 
 class RetreatCard extends Component<Props> {
   state = {
-    showAvail: false
+    showAvail: false,
+    showReg: false
   };
   renderDateRange = (beginDate, endDate) => {
     const beginDay = moment(beginDate).format("Do");
@@ -48,12 +51,21 @@ class RetreatCard extends Component<Props> {
   };
   handleAvailibity = e => {
     e.preventDefault();
-    this.setState(currState => ({ showAvail: !currState.showAvail }));
-    console.log(this.state.showAvail);
+    this.setState(currState => ({
+      showAvail: !currState.showAvail,
+      showReg: false
+    }));
+  };
+  handleshowReg = e => {
+    e.preventDefault();
+    this.setState(currState => ({
+      showReg: !currState.showReg,
+      showAvail: false
+    }));
   };
 
   render() {
-    const { showAvail } = this.state;
+    const { showAvail, showReg } = this.state;
     const { retreat, teachers, location, fees } = this.props;
     const beginDate = moment(retreat.timestampBegin * 1000);
     const endDate = moment(retreat.timestampEnd * 1000);
@@ -72,22 +84,23 @@ class RetreatCard extends Component<Props> {
           </div>
           <div className="weekdays">
             {daysDuration} Days
-            <i class="fas fa-sun" />
-            {nightDuration} Nights <i class="far fa-moon" />
+            <i className="fas fa-sun" />
+            {nightDuration} Nights <i className="far fa-moon" />
             {this.renderDaysOfWeekRange(beginDate, endDate)}
           </div>
         </div>
         <div className="card-action center main-buttons">
           <button
             onClick={this.handleAvailibity}
-            class="btn waves-effect waves-teal secondary-button"
+            className="btn waves-effect waves-teal secondary-button"
             type="submit"
             name="action"
           >
             Availibility
           </button>
           <button
-            class="btn waves-effect waves-light"
+            onClick={this.handleshowReg}
+            className="btn waves-effect waves-light"
             type="submit"
             name="action"
           >
@@ -96,50 +109,16 @@ class RetreatCard extends Component<Props> {
         </div>
 
         {showAvail && fees && <Fees fees={fees} />}
+        {showReg && fees && <OptionCont fees={fees} />}
 
         <ClassDesc desc={retreat.classDescription} />
 
         {teachers &&
           Object.keys(teachers).map(key => (
-            <TeacherCard teacher={teachers[key]} />
+            <TeacherCard key={key} teacher={teachers[key]} />
           ))}
 
-        {location && (
-          <div className="card horizontal">
-            <div
-              style={{ paddingLeft: "12px" }}
-              className="card-image location"
-            >
-              <h5
-                style={{
-                  fontWeight: "100"
-                }}
-              >
-                Location
-              </h5>
-              <img alt="retreat location" src={location.pictureUrls[0]} />
-            </div>
-            <div className="card-stacked">
-              <div className="card-content">
-                <span className="card-title">{`${location.name}`}</span>
-                <p className="">
-                  <i style={{ marginRight: "15px" }} class="far fa-map" />
-                  Address
-                </p>
-                <p className="">
-                  {location.address} {`${location.city}, ${location.state}`}
-                </p>
-                <div class="divider" />
-                <p>
-                  {location.drivingDescription && location.drivingDescription}
-                </p>
-              </div>
-              <div className="card-action">
-                <a href={location.url}>{location.url}</a>
-              </div>
-            </div>
-          </div>
-        )}
+        {location && <LocationCard location={location} />}
       </div>
     );
   }

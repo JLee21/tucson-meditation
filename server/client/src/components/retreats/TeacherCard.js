@@ -11,10 +11,10 @@ function OptionCard(props) {
 
   return (
     <div className="card horizontal">
-      <div style={{ "padding-left": "12px" }} className="card-image teacher">
+      <div style={{ paddingLeft: "12px" }} className="card-image teacher">
         <h5
           style={{
-            "font-weight": "100"
+            fontWeight: "100"
           }}
         >
           Teacher

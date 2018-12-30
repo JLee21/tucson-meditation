@@ -1,8 +1,6 @@
 @import "sass/components/color-variables";
 
 .detailClick {
-  // font-weight: 300;
-  // font-size: 0.8em;
   color: color("teal", "darken-1");
 }
 .detailClick:hover {
@@ -15,17 +13,13 @@
   font-size: 1.1em;
 }
 .fine-details {
-  // color: red;
-  color: color("black", "lighten-4");
+  color: color("black", "lighten-3");
   margin: 0;
 }
 .secondary-badge {
   min-width: 3rem;
   line-height: 22px;
   padding: 3px 6px;
-  // margin-left: 10px;
-  // margin-right: 10px;
-  // margin-bottom: 9px;
   margin: 10px !important;
   text-align: center;
   font-size: 1.6rem;
@@ -33,7 +27,6 @@
   box-sizing: border-box;
   font-weight: 300;
   font-size: 0.8rem;
-  // background-color: #26a69a;
   border-style: solid;
   border-color: color("teal", "darken-1");
   border-width: 1px;
@@ -68,10 +61,8 @@
   position: relative;
 
   i {
-    position: relative;
-    top: 3px;
-    margin-right: 15px;
-    margin-left: 10px;
+    margin-right: 12px;
+    margin-left: 7px;
   }
 }
 .card-content-2 {
@@ -81,7 +72,6 @@
 }
 .card-vert-header {
   display: flex;
-  // float: left;
   max-width: 120px;
   // height: 200px;
 }
@@ -119,6 +109,24 @@
   width: 100%;
   margin: 0 auto;
 }
+.card-image.preview > img {
+  // background-image: url("https://cdn.shopify.com/s/files/1/1155/3572/articles/listenbody_1400x.progressive.jpg?v=1486176405");
+  // background-size: contain;
+  // position: absolute;
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // height: 200px;
+  // width: 100%;
+  max-height: 150px;
+  width: 100%;
+  // margin: 0 auto;
+  //
+  object-fit: cover;
+  filter: brightness(50%);
+}
+.card-image .card-title {
+  text-shadow: 2px 1px 7px black;
+}
 
 .main-buttons {
   display: flex;
@@ -130,7 +138,6 @@
 }
 
 .parallax-container {
-  /* min-height: 100vh; */
   line-height: 0;
   height: 1000px;
   color: rgba(255, 255, 255, 0.9);
