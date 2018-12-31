@@ -15,11 +15,6 @@ type Props = {
 };
 
 class RetreatPreview extends Component<Props> {
-  handleRetreatSelect = e => {
-    // extract which retreat was selected
-    // Push the retreat route id to router/history
-    e.preventDefault();
-  };
   daysDuration = (beginDate, endDate) => {
     // diff does not count day zero. so add one day.
     return Math.trunc(moment.duration(endDate.diff(beginDate)).asDays() + 1);
@@ -66,11 +61,11 @@ class RetreatPreview extends Component<Props> {
               <p className="fine-details">
                 Hosted by <span className="tcmc-font">{retreat.hostedBy}</span>
               </p>
-              <p className="bold">{this.renderDateRange(beginDate, endDate)}</p>
             </div>
+            <p className="bold">{this.renderDateRange(beginDate, endDate)}</p>
             <div className="weekdays">
+              {`${daysDuration} Days`}
               <span>
-                {`${daysDuration} Days`}
                 <i className="fas fa-sun" />
               </span>
 

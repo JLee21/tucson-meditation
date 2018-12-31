@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions";
 
 import Landing from "./Landing";
+import Nav from "./Nav";
 import RetreatCont from "./retreats/RetreatCont";
 
 class App extends Component {
@@ -18,10 +19,13 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-          <div>
-            <Route exact path="/" component={Landing} />
-            <Route path="/retreats" component={RetreatCont} />
-          </div>
+          <>
+            <Nav />
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route path="/retreats" component={RetreatCont} />
+            </Switch>
+          </>
         </BrowserRouter>
       </div>
     );

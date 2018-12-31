@@ -73,53 +73,54 @@ class RetreatCard extends Component<Props> {
     const nightDuration = daysDuration - 1;
 
     return (
-      <div className="card">
-        <div className="card-content black-text">
-          <span className="card-title">{retreat.title}</span>
-          <div className="daterange-hostby">
-            <p>
-              Hosted by <span className="tcmc-font">{retreat.hostedBy}</span>
-            </p>
-            <p className="bold">{this.renderDateRange(beginDate, endDate)}</p>
+      <>
+        <div className="card">
+          <div className="card-content black-text">
+            <span className="card-title">{retreat.title}</span>
+            <div className="daterange-hostby">
+              <p>
+                Hosted by <span className="tcmc-font">{retreat.hostedBy}</span>
+              </p>
+              <p className="bold">{this.renderDateRange(beginDate, endDate)}</p>
+            </div>
+            <div className="weekdays">
+              {daysDuration} Days
+              <i className="fas fa-sun" />
+              {nightDuration} Nights <i className="far fa-moon" />
+              {this.renderDaysOfWeekRange(beginDate, endDate)}
+            </div>
           </div>
-          <div className="weekdays">
-            {daysDuration} Days
-            <i className="fas fa-sun" />
-            {nightDuration} Nights <i className="far fa-moon" />
-            {this.renderDaysOfWeekRange(beginDate, endDate)}
+          <div className="card-action center main-buttons">
+            <button
+              onClick={this.handleAvailibity}
+              className="btn waves-effect waves-teal secondary-button"
+              type="submit"
+              name="action"
+            >
+              Availibility
+            </button>
+            <button
+              onClick={this.handleshowReg}
+              className="btn waves-effect waves-light"
+              type="submit"
+              name="action"
+            >
+              Register
+            </button>
           </div>
+
+          {showAvail && fees && <Fees fees={fees} />}
+          {showReg && fees && <OptionCont fees={fees} />}
+
+          <ClassDesc desc={retreat.classDescription} />
         </div>
-        <div className="card-action center main-buttons">
-          <button
-            onClick={this.handleAvailibity}
-            className="btn waves-effect waves-teal secondary-button"
-            type="submit"
-            name="action"
-          >
-            Availibility
-          </button>
-          <button
-            onClick={this.handleshowReg}
-            className="btn waves-effect waves-light"
-            type="submit"
-            name="action"
-          >
-            Register
-          </button>
-        </div>
-
-        {showAvail && fees && <Fees fees={fees} />}
-        {showReg && fees && <OptionCont fees={fees} />}
-
-        <ClassDesc desc={retreat.classDescription} />
-
         {teachers &&
           Object.keys(teachers).map(key => (
             <TeacherCard key={key} teacher={teachers[key]} />
           ))}
 
         {location && <LocationCard location={location} />}
-      </div>
+      </>
     );
   }
 }
