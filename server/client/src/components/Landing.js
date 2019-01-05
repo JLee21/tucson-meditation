@@ -37,7 +37,7 @@ class Landing extends Component {
                   <Link to="#">Donate</Link>
                 </h4>
                 <h4>
-                  <Link to="#">About</Link>
+                  <Link to="/about">About</Link>
                 </h4>
               </div>
             </div>
