@@ -123,10 +123,8 @@
   // width: 100%;
   max-height: 150px;
   width: 100%;
-  // margin: 0 auto;
-  //
   object-fit: cover;
-  filter: brightness(50%);
+  filter: brightness(60%);
 }
 .card-image .card-title {
   text-shadow: 2px 1px 7px black;
@@ -142,8 +140,9 @@
 }
 
 .parallax-container {
-  line-height: 0;
-  height: 1000px;
+  // line-height: 0;
+  height: 1500px;
+  // width: 100%;
   color: rgba(255, 255, 255, 0.9);
 }
 .parallax-container .section {
@@ -151,18 +150,26 @@
 }
 
 .parallax img {
-  filter: brightness(55%);
+  filter: brightness(70%);
+  background-size: contain;
 }
-.parallax::after {
-  display: block;
-  position: relative;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0,
-    #fff 100%
-  );
-  margin-top: -150px;
-  height: 150px;
+
+.mobile-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+@media only screen and (max-width: 700px) {
+  .parallax img {
+    filter: brightness(80%);
+    object-fit: cover;
+
+    width: 200px;
+    height: 337px;
+  }
+}
+
+.drop-shadow {
+  filter: drop-shadow(30px 10px 4px #4444dd);
 }
 
 @media only screen and (max-width: 992px) {
@@ -177,7 +184,6 @@
 .title {
   font-family: "Martel Sans", sans-serif;
   font-weight: 100;
-  /* font-size: 6em; */
 }
 .landing-container {
   display: flex;
@@ -186,7 +192,7 @@
   flex-flow: column;
   height: 100vh;
   position: relative;
-  top: -140px;
+  top: -180px;
 }
 .landing-links {
   display: flex;
@@ -196,9 +202,26 @@
 
   a {
     letter-spacing: 2px;
-    font-weight: lighter;
+    font-weight: light;
     color: white;
     margin: 20px;
+    text-shadow: 0 1px 1px #bbb;
+
+    a::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      background: #333;
+      background: rgba(0, 0, 0, 0.18);
+      width: 100%;
+      height: 100%;
+      -webkit-filter: blur(5px);
+      -moz-filter: blur(5px);
+      -o-filter: blur(5px);
+      -ms-filter: blur(5px);
+      filter: blur(1px);
+    }
   }
 }
 

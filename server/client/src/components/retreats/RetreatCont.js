@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Block, InlineBlock } from "jsxstyle";
 import RetreatCard from "./RetreatCard";
 import RetreatPreview from "./RetreatPreview";
-import { ScrollTo, ScrollArea } from "react-scroll-to";
+import { Link, Route, Redirect, Switch } from "react-router-dom";
+import { ParallaxProvider } from "react-scroll-parallax";
 
 class RetreatCont extends Component {
   state = {
@@ -20,7 +22,7 @@ class RetreatCont extends Component {
     console.log("state", retreatId);
 
     return (
-      <div className="row">
+      <Block>
         <div className="col s12 m12 l6 xl4">
           {retreatLength > 0 ? (
             retreatIds.map(retreatId => (
@@ -46,18 +48,10 @@ class RetreatCont extends Component {
             <p className="section center">Sign up goes here maybe?</p>
           )}
         </div>
-      </div>
+      </Block>
     );
   }
 }
-
-// {retreatLength > 0 ? (
-//   retreatIds.map(retreatId => (
-//     <RetreatCard key={retreatId} retreatId={retreatId} />
-//   ))
-// ) : (
-//   <h3>Please Select a Retreat</h3>
-// )}
 
 function mapStateToProps({ retreats }) {
   const retreatIds = Object.keys(retreats);

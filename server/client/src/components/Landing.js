@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import M from "materialize-css";
-import tucsonImage from "../public/tucson1.jpg"; // Tell Webpack this JS file uses this image
+import tucsonImage from "../public/tucson-liliana.jpg"; // Tell Webpack this JS file uses this image
 
 class Landing extends Component {
   componentDidMount() {

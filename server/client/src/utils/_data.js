@@ -7,7 +7,7 @@ export let retreats = {
     hostedBy: "Tucson Community Meditation Center",
     classDescription:
       "A non-sectarian, non-denominational practice that develops concentration, insight and compassion. Mindfulness Meditation (Vipassana) increases one’s moment-by-moment awareness of the ordinary mind-body processes. As this awareness is cultivated, blockages and limiting forces become conscious, are observed with detachment and are released. Everyone can develop skill in this simple technique, and it is a practice that can create profound changes in how we live. This retreat is suitable for those wishing an introduction to meditation, as well as for experienced meditators. This retreat is for persons of all levels of meditation experience who are interested in deepening and intensifying their meditation practice. This is a silent retreat with sitting and walking meditation, as well as sessions of mindful movement, i.e. Yoga or Qi Gong. Instruction is through lecture, guided meditation, private and group interviews, and ‘online meditation support’. Special instructions will be available for newcomers during the retreat.",
-    backdropImageUrl: "http://lorempixel.com/400/200/nature/1",
+    backdropImageUrl: "https://picsum.photos/300/200/?image=877&?blur",
     _teachers: ["shinzenyoung"],
     _location: "codranch",
     _fees: "abc"
@@ -20,8 +20,7 @@ export let retreats = {
     hostedBy: "Tucson Community Meditation Center",
     classDescription:
       "This retreat will focus on cultivating an embodied quality of presence as a way of bringing a deeper sense of freedom and contentment into our lives. Join us for this opportunity to explore the power of mindfulness through silent sitting and walking meditation, as well as optional times to engage in the embodied practice of chanting. The retreat is designed for beginners and experienced practitioners alike, and most of it will be held in silence. ",
-    backdropImageUrl:
-      "https://cdn.shopify.com/s/files/1/1155/3572/articles/listenbody_1400x.progressive.jpg?v=1486176405",
+    backdropImageUrl: "https://picsum.photos/300/200/?image=883&?blur",
     _teachers: ["brainlesage"],
     _location: "codranch",
     _fees: "abc"

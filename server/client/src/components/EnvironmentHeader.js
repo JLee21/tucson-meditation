@@ -4,6 +4,9 @@ import { Block, Row, Inline, Col } from "jsxstyle";
 import { Link, Route } from "react-router-dom";
 import { LIGHT_GRAY, RED } from "../Theme";
 import Logo from "./Logo";
+import { IconContext } from "react-icons";
+import { MdArrowBack } from "react-icons/md";
+import { Flex, Box, Card, Image, Heading, Text } from "rebass";
 
 const Tab = ({ to, ...rest }) => (
   <Route
@@ -47,19 +50,31 @@ const Tabs = () => (
   </Row>
 );
 
+const Title = props => (
+  <Block
+    textTransform="uppercase"
+    fontWeight="lighter"
+    fontSize="40px"
+    color={LIGHT_GRAY}
+    marginTop={5}
+    fontFamily="Martel Sans, sans-serif"
+    {...props}
+  />
+);
+
 const Branding = () => (
-  <Col alignItems="center" padding="15px 0">
-    <Logo size={100} shadow={false} />
-    <Block
-      marginTop="10px"
-      flex="1"
-      textTransform="uppercase"
-      fontWeight="bold"
-      fontSize="90%"
-    >
-      Retreats
-    </Block>
-  </Col>
+  <Flex px={2} color="white" alignItems="center" css={{ background: "blue" }}>
+    <Link to="/">
+      <IconContext.Provider value={{ color: "hsl(0, 0%, 32%)", size: "40px" }}>
+        <div>
+          <MdArrowBack />
+        </div>
+      </IconContext.Provider>
+    </Link>
+    <Box width={1 / 2} mx="auto">
+      <Title>Retreats</Title>
+    </Box>
+  </Flex>
 );
 
 const EnvironmentHeader = () => (
@@ -67,6 +82,5 @@ const EnvironmentHeader = () => (
     <Branding />
   </Block>
 );
-// <Tabs />
 
 export default EnvironmentHeader;

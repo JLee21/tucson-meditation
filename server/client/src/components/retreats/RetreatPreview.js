@@ -2,10 +2,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import pick from "lodash/pick";
+import Img from "react-image";
+import { Block } from "jsxstyle";
+// import VisibilitySensor from "react-visibility-sensor";
 import * as moment from "moment";
-// <div className="divider" />
-// <i className="far fa-sun" />
-// <i className="material-icons tiny">brightness_5</i>
+import { Link } from "react-router-dom";
+import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 
 type Props = {
   retreatID: string,
@@ -40,19 +42,22 @@ class RetreatPreview extends Component<Props> {
   };
 
   render() {
-    const { retreatID, retreat, teachers, location, onSelect } = this.props;
+    const { to, retreatId, retreat, teachers, location } = this.props;
     const beginDate = moment(retreat.timestampBegin * 1000);
     const endDate = moment(retreat.timestampEnd * 1000);
     const daysDuration = this.daysDuration(beginDate, endDate);
     const nightDuration = daysDuration - 1;
 
     return (
-      <div>
+      <Block marginTop="20">
         <div className="card">
           <div className="card-image preview">
-            {retreat.backdropImageUrl && <img src={retreat.backdropImageUrl} />}
+            {retreat.backdropImageUrl && (
+              <Img src={retreat.backdropImageUrl} decode={false} />
+            )}
             <span className="card-title">{retreat.title}</span>
           </div>
+
           <div className="card-content black-text">
             <div className="daterange-hostby">
               <p>
@@ -81,27 +86,28 @@ class RetreatPreview extends Component<Props> {
             </div>
           </div>
           <div className="card-action main-buttons">
-            <button
-              onClick={onSelect}
-              className="btn waves-effect waves-light"
-              type="submit"
-              value={retreatID}
-            >
-              Show More
-            </button>
+            <Link style={{ color: "white" }} to={to}>
+              <button
+                className="btn waves-effect waves-light"
+                type="submit"
+                value={retreatId}
+              >
+                Show More
+              </button>
+            </Link>
           </div>
         </div>
-      </div>
+      </Block>
     );
   }
 }
 
 function mapStateToProps(state, props) {
-  const retreatID = props.retreatId;
+  const { retreatId, to } = props;
   const { retreats, teachers, locations } = state;
 
   // retreat
-  const _retreat = retreats[retreatID];
+  const _retreat = retreats[retreatId];
 
   // teachers
   // slice-out (ie pick) any teacher objects denoted by _retreatTeachersIds
@@ -110,11 +116,12 @@ function mapStateToProps(state, props) {
   const _teachers = pick(teachers, _teachersIds);
 
   // location
-  const _locationId = retreats[retreatID]._location;
+  const _locationId = retreats[retreatId]._location;
   const _location = locations[_locationId];
 
   return {
-    retreatID,
+    to,
+    retreatId,
     retreat: _retreat,
     teachers: _teachers,
     location: _location

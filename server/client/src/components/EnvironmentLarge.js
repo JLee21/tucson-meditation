@@ -1,27 +1,33 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { Block, InlineBlock } from "jsxstyle";
 import { Link, Route, Redirect, Switch } from "react-router-dom";
 import { LIGHT_GRAY, RED } from "../Theme";
 import EnvironmentHeader from "./EnvironmentHeader";
 import RetreatCont from "./retreats/RetreatCont";
-// import Example from "./Example";
-// import Guide from "./Guide";
+import RetreatPreview from "./retreats/RetreatPreview";
+import RetreatCard from "./retreats/RetreatCard";
+import { ParallaxProvider } from "react-scroll-parallax";
 
-function EnvironmentLarge(props) {
+// "Content" is everything outside of the Nav comp. In this case, it'll be the
+function EnvironmentLarge({ retreatIds, match }) {
+  console.log("EnvironmentLarge match", match);
+  console.log("EnvironmentLarge match.params", match.params);
+
   return (
     <Block>
-      <Nav />
+      <Nav retreatIds={retreatIds} />
+      <Content retreatId={match.params.retreatId} match={match} />
     </Block>
   );
 }
-// "Content" is everything outside of the Nav comp.
-// <Content data={data} match={match} />
 
 const Title = props => (
   <Block
     textTransform="uppercase"
     fontWeight="bold"
+    textAlign="center"
     color={LIGHT_GRAY}
     marginTop="20px"
     {...props}
@@ -42,18 +48,18 @@ const Triangle = ({ color }) => (
 
 Triangle.propTypes = { color: PropTypes.string };
 
-const NavLink = ({ children, to, color, triangleColor }) => (
+const NavLink = ({ to, retreatId, color, triangleColor }) => (
   <Route
     path={to}
     children={({ match }) => (
       <Block
-        component={Link}
+        padding="0"
+        component={RetreatPreview}
         hoverTextDecoration="underline"
-        color={match ? RED : color}
+        color={color}
         position="relative"
-        props={{ to }}
+        props={{ to, retreatId }}
       >
-        {children}
         {match && <Triangle color={triangleColor} />}
       </Block>
     )}
@@ -61,79 +67,47 @@ const NavLink = ({ children, to, color, triangleColor }) => (
 );
 
 NavLink.propTypes = {
-  children: PropTypes.string,
-  to: PropTypes.string,
-  color: PropTypes.string,
-  triangleColor: PropTypes.string
+  // children: PropTypes.string,
+  // to: PropTypes.string,
+  // color: PropTypes.string,
+  // triangleColor: PropTypes.string
 };
 
-const NavLinks = ({ data, environment }) => (
-  <Block lineHeight="1.8" padding="10px">
-    {data.examples && (
-      <Block>
-        <Title>Examples</Title>
-        <Block paddingLeft="10px">
-          {data.examples.map((item, i) => (
-            <NavLink
-              key={i}
-              to={`/${environment}/example/${item.slug}`}
-              triangleColor="rgb(45, 45, 45)"
-              children={item.label}
-            />
-          ))}
-        </Block>
-      </Block>
-    )}
-
-    <Title>Guides</Title>
-    <Block paddingLeft="10px">
-      {data.guides &&
-        data.guides.map((item, i) => (
-          <NavLink
-            key={i}
-            to={`/${environment}/guides/${item.title.slug}`}
-            triangleColor="white"
-            children={item.title.text}
-          />
-        ))}
-    </Block>
-
-    <Title>API</Title>
-    <Block paddingLeft="10px" fontFamily="Monaco, monospace">
-      {data.api.map((item, i) => (
-        <Block key={i} marginBottom="10px">
-          <NavLink
-            key={i}
-            to={`/${environment}/api/${item.title.slug}`}
-            triangleColor="white"
-            children={item.title.text}
-          />
-          <Block paddingLeft="10px" fontSize="90%">
-            {item.headers.map((header, i) => (
-              <NavLink
-                key={i}
-                to={`/${environment}/api/${item.title.slug}/${header.slug}`}
-                triangleColor="white"
-                children={header.text}
-                color={LIGHT_GRAY}
-              />
-            ))}
+const NavLinks = ({ retreatIds }) => {
+  const retreatLength = retreatIds.length;
+  return (
+    <Block lineHeight="1.8" padding="10px">
+      {retreatLength > 0 && (
+        <Block>
+          <Block padding="20px">
+            {retreatLength > 0 ? (
+              retreatIds.map(retreatId => (
+                <NavLink
+                  key={retreatId}
+                  to={`/retreats/${retreatId}`}
+                  triangleColor="rgb(45, 45, 45)"
+                  retreatId={retreatId}
+                />
+              ))
+            ) : (
+              <h3>No Retreats Availble</h3>
+            )}
           </Block>
         </Block>
-      ))}
+      )}
     </Block>
-  </Block>
-);
-
-NavLinks.propTypes = {
-  data: PropTypes.object,
-  environment: PropTypes.string
+  );
 };
 
-const Nav = () => (
+NavLinks.propTypes = {
+  // data: PropTypes.object,
+  // environment: PropTypes.string
+};
+
+const Nav = ({ retreatIds }) => (
   <Block
     fontSize="13px"
-    background="#eee"
+    background="#ccc"
     overflow="auto"
     position="fixed"
     height="100vh"
@@ -141,50 +115,48 @@ const Nav = () => (
     top="0"
     bottom="0"
     width="600px"
+    background="linear-gradient(to bottom, rgba(221,221,221,0.9) 0%,rgba(221,221,221,1) 33%,rgb(0,128,128, 0.1) 100%)"
   >
     <EnvironmentHeader />
-    <RetreatCont />
+    <NavLinks retreatIds={retreatIds} />
   </Block>
 );
-// <NavLinks data={data} environment={environment} />
 
 Nav.propTypes = {
-  data: PropTypes.object,
-  environment: PropTypes.string
+  // retreatIds: PropTypes.array
 };
 
-// const Content = ({ data, match }) => (
-//   <Block marginLeft="250px">
-//     <Switch>
-//       <Route
-//         path={`${match.path}/api/:mod?/:header?`}
-//         render={props => (
-//           <API key={props.match.params.environment} {...props} data={data} />
-//         )}
-//       />
-//       <Route
-//         path={`${match.path}/example/:example`}
-//         render={props => <Example {...props} data={data} />}
-//       />
-//       <Route
-//         path={`${match.path}/guides/:mod/:header?`}
-//         render={props => <Guide {...props} data={data} />}
-//       />
-//       <Route
-//         exact
-//         path={match.url}
-//         render={() => (
-//           <Redirect to={`${match.url}/guides/${data.guides[0].title.slug}`} />
-//         )}
-//       />
-//       <Redirect to={match.url} />
-//     </Switch>
-//   </Block>
-// );
+const Content = ({ retreatId, match }) => {
+  console.log("Content match", match);
 
-// Content.propTypes = {
-//   data: PropTypes.object,
-//   match: PropTypes.object
-// };
+  return (
+    <Block marginLeft="600px">
+      <Switch>
+        <Route
+          path={"/retreats/:retreatId"}
+          render={props => (
+            <RetreatCard key={retreatId} retreatId={retreatId} />
+          )}
+        />
+        <Route
+          exact
+          path={match.url}
+          render={() => <Redirect to={"/retreats"} />}
+        />
+        <Redirect to={match.url} />
+      </Switch>
+    </Block>
+  );
+};
 
-export default EnvironmentLarge;
+Content.propTypes = {
+  //   data: PropTypes.object,
+  //   match: PropTypes.object
+};
+
+function mapStateToProps({ retreats, match }) {
+  const retreatIds = Object.keys(retreats);
+  return { retreatIds };
+}
+
+export default connect(mapStateToProps)(EnvironmentLarge);
