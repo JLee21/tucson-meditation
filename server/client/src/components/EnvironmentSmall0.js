@@ -232,10 +232,6 @@ class AnimatedParentHeader extends Component {
 }
 
 class AnimatedNav extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    anim: PropTypes.object
-  };
 
   render() {
     const { anim, children } = this.props;
@@ -260,12 +256,6 @@ class AnimatedNav extends Component {
 }
 
 class AnimatedChild extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    anim: PropTypes.object,
-    atParent: PropTypes.bool,
-    animating: PropTypes.bool
-  };
 
   state = {
     previousChildren: null
@@ -324,12 +314,6 @@ class AnimatedChild extends Component {
 }
 
 class AnimatedChildHeader extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    anim: PropTypes.object,
-    atParent: PropTypes.bool,
-    animating: PropTypes.bool
-  };
 
   state = {
     previousChildren: null
