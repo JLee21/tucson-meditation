@@ -71,7 +71,26 @@ class EnvironmentSmall extends Component {
               anim={anim}
               atParent={match.isExact}
               animating={animating}
-            />
+            >
+              <Switch location={location}>
+                <Route
+                  path={"/retreats/:retreatId"}
+                  render={({
+                    match: {
+                      params: { mod }
+                    }
+                  }) => (
+                    <Header
+                      url={match.url}
+                      fontFamily="Menlo, monospace"
+                      textTransform="none"
+                    >
+                      Moew
+                    </Header>
+                  )}
+                />
+              </Switch>
+            </AnimatedChildHeader>
           </AnimatedHeaderBg>
         </Block>
         <NavLinks retreatIds={retreatIds} />
@@ -94,16 +113,15 @@ class AnimatedHeaderBg extends Component {
         top="0"
         left="0"
         right="0"
-        fontSize="13px"
-        background="linear-gradient(to bottom, rgba(221,221,221,1) 0%,rgba(221,221,221,1) 33%,rgba(221,221,221,0.9) 100%)"
+        background="linear-gradient(to bottom, rgba(255,255,255,0.9) 33%,rgba(255,255,255,0.7) 100%)"
         overflow="hidden"
-        filter="drop-shadow(0px 1px 2px teal)"
+        filter="drop-shadow(0px 3px 10px rgba(221,221,221,1))"
       >
         <Animated.div
           style={{
             height: anim.interpolate({
               inputRange: [0, 1],
-              outputRange: [65, 50]
+              outputRange: [45, 40]
             })
           }}
         >
@@ -222,10 +240,6 @@ class AnimatedChildHeader extends Component {
 }
 
 class GoUp extends React.Component {
-  static propTypes = {
-    url: PropTypes.string
-  };
-
   state = {
     justClicked: false
   };
@@ -236,7 +250,7 @@ class GoUp extends React.Component {
     return (
       <Block
         component={Link}
-        fontSize="45px"
+        fontSize="30px"
         color={RED}
         opacity={justClicked ? "0.25" : "1"}
         lineHeight="0"
@@ -260,7 +274,7 @@ const Header = ({ children, url, ...rest }) => (
     justifyContent="center"
     fontSize="14px"
     width="100%"
-    height="50px"
+    height="40px"
     textAlign="center"
     textTransform="uppercase"
     fontWeight="bold"
@@ -271,11 +285,6 @@ const Header = ({ children, url, ...rest }) => (
     <GoUp url={url} />
   </Col>
 );
-
-Header.propTypes = {
-  children: PropTypes.node,
-  url: PropTypes.string
-};
 
 const NavLink = ({ to, retreatId, color, triangleColor }) => (
   <Route
@@ -292,13 +301,6 @@ const NavLink = ({ to, retreatId, color, triangleColor }) => (
   />
 );
 
-NavLink.propTypes = {
-  // children: PropTypes.string,
-  // to: PropTypes.string,
-  // color: PropTypes.string,
-  // triangleColor: PropTypes.string
-};
-
 const NavLinks = ({ retreatIds }) => {
   const retreatLength = retreatIds.length;
   return (
@@ -310,11 +312,11 @@ const NavLinks = ({ retreatIds }) => {
       left="0"
       width="100%"
       overflow="scroll"
-      paddingTop="70px"
+      paddingTop="30px"
     >
       {retreatLength > 0 && (
         <Block>
-          <Block padding="20px" marginBottom="100px">
+          <Block padding="20px" marginBottom="20px">
             {retreatLength > 0 ? (
               retreatIds.map(retreatId => (
                 <NavLink
@@ -332,11 +334,6 @@ const NavLinks = ({ retreatIds }) => {
       )}
     </Block>
   );
-};
-
-NavLinks.propTypes = {
-  // data: PropTypes.object,
-  // environment: PropTypes.string
 };
 
 function mapStateToProps({ retreats, match }) {

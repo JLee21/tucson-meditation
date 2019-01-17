@@ -2,17 +2,15 @@ import React, { Component } from "react";
 import EnvironmentLarge from "./EnvironmentLarge";
 import EnvironmentSmall from "./EnvironmentSmall";
 import SmallScreen from "./SmallScreen";
-import { ParallaxProvider } from "react-scroll-parallax";
-import { Block, InlineBlock } from "jsxstyle";
-
-// const EnvironmentSmall = () => <p>Meow</p>;
-// const EnvironmentLarge = () => <p>Bark</p>;
 
 class Environment extends Component {
   render() {
     const { history, location, match } = this.props;
-    console.log("Environment match: ", match);
-    console.log("Environment location: ", location);
+    console.group("EnvironmentComponent");
+    console.info("match: ", match);
+    console.info("location: ", location);
+    console.info("history: ", history);
+    console.groupEnd();
 
     return (
       <SmallScreen>

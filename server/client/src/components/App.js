@@ -8,6 +8,7 @@ import Nav from "./Nav";
 import RetreatCont from "./retreats/RetreatCont";
 import RetreatCard from "./retreats/RetreatCard";
 import Environment from "./Environment";
+import About from "./About";
 
 function App(props) {
   console.log("App handleInitialData()...");
@@ -20,6 +21,7 @@ function App(props) {
           <Route exact path="/" component={Landing} />
           <Route path="/retreats/:retreatId" component={Environment} />
           <Route exact={true} path="/retreats/" component={Environment} />
+          <Route path="/about/" component={About} />
         </Switch>
       </BrowserRouter>
     </div>

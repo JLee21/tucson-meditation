@@ -54,18 +54,19 @@ const Title = props => (
   <Block
     textTransform="uppercase"
     fontWeight="lighter"
-    fontSize="40px"
+    fontSize="30px"
     color={LIGHT_GRAY}
     marginTop={5}
+    filter="drop-shadow(0px 3px 10px rgba(221,221,221,0.8))"
     fontFamily="Martel Sans, sans-serif"
     {...props}
   />
 );
 
 const Branding = () => (
-  <Flex px={2} color="white" alignItems="center" css={{ background: "blue" }}>
+  <Flex px={2} color="white" alignItems="center">
     <Link to="/">
-      <IconContext.Provider value={{ color: "hsl(0, 0%, 32%)", size: "40px" }}>
+      <IconContext.Provider value={{ color: "hsl(0, 0%, 32%)", size: "30px" }}>
         <div>
           <MdArrowBack />
         </div>

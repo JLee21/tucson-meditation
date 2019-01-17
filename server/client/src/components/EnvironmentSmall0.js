@@ -209,10 +209,6 @@ class AnimatedHeaderBg extends Component {
 }
 
 class AnimatedParentHeader extends Component {
-  static propTypes = {
-    anim: PropTypes.object,
-    children: PropTypes.node
-  };
 
   render() {
     const { anim, children } = this.props;
@@ -513,10 +509,6 @@ const NavLink = ({ to, ...props }) => (
 NavLink.propTypes = { to: PropTypes.string };
 
 class Nav extends Component {
-  static propTypes = {
-    data: PropTypes.object,
-    environment: PropTypes.string
-  };
 
   render() {
     const { environment, data } = this.props;
@@ -529,7 +521,7 @@ class Nav extends Component {
         left="0"
         width="100%"
         overflow="scroll"
-        paddingTop="150px"
+        paddingTop="15px"
       >
         {data.examples && (
           <Block>
