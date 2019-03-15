@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../actions";
 
 import Landing from "./Landing";
-import Nav from "./Nav";
 import RetreatCont from "./retreats/RetreatCont";
 import RetreatCard from "./retreats/RetreatCard";
 import Environment from "./Environment";
@@ -18,7 +17,7 @@ function App(props) {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Landing} />
+          <Route exact path="/" component={Environment} />
           <Route path="/retreats/:retreatId" component={Environment} />
           <Route exact={true} path="/retreats/" component={Environment} />
           <Route path="/about/" component={About} />

@@ -1,106 +1,81 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import M from "materialize-css";
+import { Link as _Link } from "react-router-dom";
+import { Box, Card, Image, Heading, Text, Flex } from "rebass";
+import { Block, Row, Inline, Col } from "jsxstyle";
+import { SMALL_SCREEN, LIGHT_GRAY, BRIGHT_GRAY } from "../Theme";
+import styled from "styled-components";
+import Environment from "./Environment";
 import tucsonImage from "../public/tucson-liliana.jpg"; // Tell Webpack this JS file uses this image
 
-class Landing extends Component {
-  componentDidMount() {
-    M.Parallax.init(this.Landing);
-  }
+// const LinkWrap = styled.div`
+//   font-size=13px
+//   position=relative
+//   left=0
+//   top=0
+//   bottom=0
+//   text-align=left
+//   padding-top=100px
+//   padding-left=80px
+// `;
 
+const Link = styled(_Link)`
+  color: black;
+`;
+
+const LinksWrap2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: space-between;
+  height: 30vh;
+  width: 275px;
+  text-align: left;
+  padding-top: 30px;
+  padding-left: 80px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.8) 5%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+`;
+
+const NavLink = ({ to, children }) => (
+  <Link to={to}>
+    <Text fontFamily={"sans"} fontWeight="300" fontSize={[4]}>
+      {children}
+    </Text>
+  </Link>
+);
+
+class Landing extends Component {
   render() {
     return (
-      <div>
-        <div
-          ref={Landing => {
-            this.Landing = Landing;
-          }}
-          id="index-banner"
-          className="parallax-container"
-        >
-          <div className="section no-pad">
-            <div className="container landing-container">
-              <h1 className="header center title">
-                Tucson Community Meditation Center
-              </h1>
-              <div className="landing-links">
-                <h4>
-                  <Link to="#">Classes</Link>
-                </h4>
-                <h4>
-                  <Link to="/retreats">Retreats</Link>
-                </h4>
-                <h4>
-                  <Link to="#">Schedule</Link>
-                </h4>
-                <h4>
-                  <Link to="#">Donate</Link>
-                </h4>
-                <h4>
-                  <Link to="/about">About</Link>
-                </h4>
-              </div>
-            </div>
-          </div>
-          <div className="parallax">
-            <img src={tucsonImage} alt="Unsplashed background img 1" />
-          </div>
-        </div>
-        <div className="container">
-          <div className="section no-pad">
-            <div className="row">
-              <div className="col s12 m4">
-                <div className="icon-block">
-                  <h2 className="center black-text">
-                    <i className="material-icons">flash_on</i>
-                  </h2>
-                  <h5 className="center">Speeds up development</h5>
-
-                  <p className="light">
-                    We did most of the heavy lifting for you to provide a
-                    default stylings that incorporate our custom components.
-                    Additionally, we refined animations and transitions to
-                    provide a smoother experience for developers.
-                  </p>
-                </div>
-              </div>
-
-              <div className="col s12 m4">
-                <div className="icon-block">
-                  <h2 className="center black-text">
-                    <i className="material-icons">group</i>
-                  </h2>
-                  <h5 className="center">User Experience Focused</h5>
-
-                  <p className="light">
-                    By utilizing elements and principles of Material Design, we
-                    were able to create a framework that incorporates components
-                    and animations that provide more feedback to users.
-                    Additionally, a single underlying responsive system across
-                    all platforms allow for a more unified user experience.
-                  </p>
-                </div>
-              </div>
-
-              <div className="col s12 m4">
-                <div className="icon-block">
-                  <h2 className="center black-text">
-                    <i className="material-icons">settings</i>
-                  </h2>
-                  <h5 className="center">Easy to work with</h5>
-
-                  <p className="light">
-                    We have provided detailed documentation as well as specific
-                    code examples to help new users get started. We are also
-                    always open to feedback and can answer any questions a user
-                    may have about Materialize.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <>
+        <Flex>
+          <Block width="275px" height="100vh">
+            <Block
+              position="relative"
+              left="0"
+              top="0"
+              bottom="0"
+              textAlign="center"
+              padding="15px"
+              boxShadow="0 8px 6px -10px black"
+            >
+              <Heading fontFamily={"sans"}>
+                <Link to="/">Tucson Community Meditation Center</Link>
+              </Heading>
+            </Block>
+            <LinksWrap2>
+              <NavLink to="/retreats">Retreats</NavLink>
+              <NavLink to="/retreats">Classes</NavLink>
+              <NavLink to="/retreats">Teachers</NavLink>
+              <NavLink to="/about">About</NavLink>
+              <NavLink to="/retreats">Donate</NavLink>
+            </LinksWrap2>
+          </Block>
+        </Flex>
+      </>
     );
   }
 }

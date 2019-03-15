@@ -74,7 +74,7 @@ class RetreatCard extends Component<Props> {
       const nightDuration = daysDuration - 1;
 
       return (
-        <Block margin="40px" width="500px">
+        <Block width="500px">
           <div className="card">
             <div className="card-content black-text">
               <span className="card-title">{retreat.title}</span>

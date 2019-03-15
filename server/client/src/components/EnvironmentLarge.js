@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Block, InlineBlock } from "jsxstyle";
+import { Block, Flex, Row, Inline, InlineBlock } from "jsxstyle";
 import { Link, Route, Redirect, Switch } from "react-router-dom";
 import { LIGHT_GRAY, RED } from "../Theme";
 import EnvironmentHeader from "./EnvironmentHeader";
@@ -16,10 +16,10 @@ function EnvironmentLarge({ retreatIds, match }) {
   console.log("EnvironmentLarge match.params", match.params);
 
   return (
-    <Block>
+    <Flex>
       <Nav retreatIds={retreatIds} />
       <Content retreatId={match.params.retreatId} match={match} />
-    </Block>
+    </Flex>
   );
 }
 
@@ -66,20 +66,13 @@ const NavLink = ({ to, retreatId, color, triangleColor }) => (
   />
 );
 
-NavLink.propTypes = {
-  // children: PropTypes.string,
-  // to: PropTypes.string,
-  // color: PropTypes.string,
-  // triangleColor: PropTypes.string
-};
-
-const NavLinks = ({ retreatIds }) => {
+const PreviewCards = ({ retreatIds }) => {
   const retreatLength = retreatIds.length;
   return (
-    <Block lineHeight="1.8" padding="10px">
+    <Block lineHeight="1.8" padding="0 10px">
       {retreatLength > 0 && (
         <Block>
-          <Block padding="20px">
+          <Block>
             {retreatLength > 0 ? (
               retreatIds.map(retreatId => (
                 <NavLink
@@ -99,38 +92,27 @@ const NavLinks = ({ retreatIds }) => {
   );
 };
 
-NavLinks.propTypes = {
-  // data: PropTypes.object,
-  // environment: PropTypes.string
-};
-
 const Nav = ({ retreatIds }) => (
   <Block
     fontSize="13px"
-    background="#ccc"
-    overflow="auto"
-    position="fixed"
+    position="relative"
     height="100vh"
     left="0"
     top="0"
     bottom="0"
-    width="600px"
-    background="linear-gradient(to bottom, rgba(221,221,221,0.9) 0%,rgba(221,221,221,1) 33%,rgb(0,128,128, 0.1) 100%)"
+    width="400px"
+    padding="40px 20px 20px"
   >
-    <EnvironmentHeader />
-    <NavLinks retreatIds={retreatIds} />
+    <PreviewCards retreatIds={retreatIds} />
   </Block>
 );
-
-Nav.propTypes = {
-  // retreatIds: PropTypes.array
-};
+// <EnvironmentHeader />;
 
 const Content = ({ retreatId, match }) => {
   console.log("Content match", match);
 
   return (
-    <Block marginLeft="600px">
+    <Block paddingTop="40px">
       <Switch>
         <Route
           path={"/retreats/:retreatId"}
@@ -138,21 +120,16 @@ const Content = ({ retreatId, match }) => {
             <RetreatCard key={retreatId} retreatId={retreatId} />
           )}
         />
-        <Route
-          exact
-          path={match.url}
-          render={() => <Redirect to={"/retreats"} />}
-        />
-        <Redirect to={match.url} />
       </Switch>
     </Block>
   );
 };
-
-Content.propTypes = {
-  //   data: PropTypes.object,
-  //   match: PropTypes.object
-};
+// <Route
+//   exact
+//   path={match.url}
+//   render={() => <Redirect to={"/retreats"} />}
+// />
+// <Redirect to={match.url} />
 
 function mapStateToProps({ retreats, match }) {
   const retreatIds = Object.keys(retreats);

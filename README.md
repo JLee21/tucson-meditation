@@ -1,3 +1,18 @@
+
+# Tucson Meditation
+
+### An early stage React and Redux project to make registering for a Mediation Retreat easy and frictionless
+
+
+![](./imgs/2.png)
+
+![](./imgs/5.png)
+
+![](./imgs/3.png)
+
+
+# Developer Notes
+
 - Users can sign up for a class/retreat
 - Users can pay for the class.
 - Users automatically receive confirmation emails (sign-up and payment)
