@@ -1,4 +1,3 @@
-// import "./css/js/waves";
 import "./css/sass/materialize.scss";
 import "./css/style.scss";
 import React from "react";

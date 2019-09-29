@@ -1,4 +1,4 @@
-import { getInitialData } from "../utils/api";
+import { getInitialData } from "../data/api";
 import {
   STORE_RETREATS,
   STORE_TEACHERS,

@@ -7,17 +7,6 @@ import styled from "styled-components";
 import Environment from "./Environment";
 import tucsonImage from "../public/tucson-liliana.jpg"; // Tell Webpack this JS file uses this image
 
-// const LinkWrap = styled.div`
-//   font-size=13px
-//   position=relative
-//   left=0
-//   top=0
-//   bottom=0
-//   text-align=left
-//   padding-top=100px
-//   padding-left=80px
-// `;
-
 const Link = styled(_Link)`
   color: black;
 `;
@@ -25,7 +14,6 @@ const Link = styled(_Link)`
 const LinksWrap2 = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: space-between;
   height: 30vh;
   width: 275px;
